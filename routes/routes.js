@@ -1,10 +1,11 @@
 'use strict';
-var express = require('express');
-var path = require('path');
+import express from 'express'
+import path from 'path'
+
 let router = express.Router();
 
 //Article Schema
-var Article = require('./../models/Article');
+import Article from './../models/Article'
 
 //MAIN ROUTE TO SPA
 router.get('/', function (req, res) {
@@ -50,4 +51,4 @@ router.delete('/api/saved/', function (req, res) {
     });
 });
 
-module.exports = router;
+export default router

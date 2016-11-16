@@ -1,14 +1,14 @@
-//NPM Packages
-var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var path = require('path');
-var mongoose = require('mongoose');
-var routes = require('./routes/routes');
+'use strict';
+import express from 'express';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import path from 'path';
+import mongoose from 'mongoose';
+import routes from './routes/routes'
 
 //EXPRESS
-var app = express();
-var PORT = process.env.PORT || 3150;
+let app = express();
+let PORT = process.env.PORT || 3150;
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });
@@ -24,7 +24,7 @@ app.use('/', routes);
 
 //MONGO DB
 mongoose.connect('mongodb://heroku_j3994l01:er6m0l34amm8jn958eqrg1bvsa@ds155087.mlab.com:55087/heroku_j3994l01');
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 db.on('error', function (err) {
     console.log('Mongoose Error: ', err);

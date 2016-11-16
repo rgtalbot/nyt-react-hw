@@ -2,7 +2,7 @@ import React from 'react'
 
 import Query from './Search/Query'
 import Results from './Search/Results'
-import helpers from './Utility/helper'
+import helpers from './utils/helper'
 
 class Search extends React.Component {
 

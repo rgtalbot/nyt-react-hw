@@ -1,6 +1,6 @@
 import React from 'react';
 
-import helpers from './../Utility/helper'
+import helpers from '../utils/helper'
 
 class Results extends React.Component {
 
