@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rgtalbot/nyt-react-hw#readme",
   "dependencies": {
+    "babel-cli": "^6.18.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.8",
@@ -33,7 +34,6 @@
   "devDependencies": {
     "assert": "^1.4.1",
     "axios": "^0.15.2",
-    "babel-cli": "^6.18.0",
     "babel-core": "^6.9.1",
     "babel-eslint": "^7.1.0",
     "babel-loader": "^6.2.4",
