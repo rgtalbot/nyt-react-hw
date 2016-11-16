@@ -16,5 +16,25 @@
   "bugs": {
     "url": "https://github.com/rgtalbot/nyt-react-hw/issues"
   },
-  "homepage": "https://github.com/rgtalbot/nyt-react-hw#readme"
+  "homepage": "https://github.com/rgtalbot/nyt-react-hw#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.8",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^3.0.0"
+  },
+  "devDependencies": {
+    "axios": "^0.15.2",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "webpack": "^1.13.1"
+  }
 }
