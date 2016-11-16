@@ -18,7 +18,11 @@ class Search extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('component did update');
+        console.log('this.state', this.state);
+        console.log('prevState', prevState);
         if (this.state.topic != "" && (prevState.topic != this.state.topic || prevState.start != this.state.start || prevState.end != this.state.end)) {
+            console.log('runQuery');
             helpers.runQuery(this.state.topic, this.state.start, this.state.end)
                 .then(function(data) {
                     if (data != this.state.results) {
@@ -29,11 +33,13 @@ class Search extends React.Component {
     }
 
     setSearch(newTopic, newStart, newEnd) {
+        console.log('set search');
         this.setState({
             topic: newTopic,
             start: newStart,
             end: newEnd
         });
+        console.log('state set');
     }
 
     render() {

@@ -20,6 +20,7 @@ class Query extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log('submit');
         this.props.update(this.state.topic, this.state.start, this.state.end);
 
     }

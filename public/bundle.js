@@ -68,7 +68,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//Reactu router in action
+	//React-router in action
 	// Include the Main React Dependencies
 	(0, _reactDom.render)(_react2.default.createElement(
 	    _reactRouter.Router,
@@ -82,7 +82,7 @@
 	    )
 	), document.getElementById('app'));
 
-	//Import the componemnts
+	//Import the components
 
 /***/ },
 /* 1 */
@@ -26558,7 +26558,11 @@
 	    _createClass(Search, [{
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate(prevProps, prevState) {
+	            console.log('component did update');
+	            console.log('this.state', this.state);
+	            console.log('prevState', prevState);
 	            if (this.state.topic != "" && (prevState.topic != this.state.topic || prevState.start != this.state.start || prevState.end != this.state.end)) {
+	                console.log('runQuery');
 	                _helper2.default.runQuery(this.state.topic, this.state.start, this.state.end).then(function (data) {
 	                    if (data != this.state.results) {
 	                        this.setState({ results: data });
@@ -26569,11 +26573,13 @@
 	    }, {
 	        key: 'setSearch',
 	        value: function setSearch(newTopic, newStart, newEnd) {
+	            console.log('set search');
 	            this.setState({
 	                topic: newTopic,
 	                start: newStart,
 	                end: newEnd
 	            });
+	            console.log('state set');
 	        }
 	    }, {
 	        key: 'render',
@@ -26644,6 +26650,7 @@
 	        key: "handleSubmit",
 	        value: function handleSubmit(e) {
 	            e.preventDefault();
+	            console.log('submit');
 	            this.props.update(this.state.topic, this.state.start, this.state.end);
 	        }
 	    }, {
@@ -26752,8 +26759,10 @@
 
 	    _createClass(Results, [{
 	        key: 'handleClick',
-	        value: function handleClick(item, event) {
-	            _helper2.default.postSaved(item.headline.main, item.lead_paragraph, item.pub_date, item.web_url).then(function (data) {}.bind(this));
+	        value: function handleClick(item) {
+	            _helper2.default.postSaved(item.headline.main, item.lead_paragraph, item.pub_date, item.web_url).then(function (data) {
+	                console.log('save successful');
+	            }.bind(this));
 	        }
 	    }, {
 	        key: 'render',
@@ -26817,8 +26826,12 @@
 	                                        { className: 'row' },
 	                                        _react2.default.createElement(
 	                                            'a',
-	                                            { href: article.web_url, target: '_blank', className: 'btn' },
-	                                            'View Article'
+	                                            { href: article.web_url, target: '_blank' },
+	                                            _react2.default.createElement(
+	                                                'button',
+	                                                { className: 'btn btn-primary' },
+	                                                'View Article'
+	                                            )
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -26826,7 +26839,7 @@
 	                                        { className: 'row' },
 	                                        _react2.default.createElement(
 	                                            'button',
-	                                            { className: 'btn', onClick: this.handleClick.bind(this, article) },
+	                                            { className: 'btn btn-default', onClick: this.handleClick.bind(this, article) },
 	                                            'Save'
 	                                        )
 	                                    )
@@ -26900,17 +26913,21 @@
 	        term = term.trim();
 	        start = start.trim() + "0101";
 	        end = end.trim() + "1231";
+	        console.log('query started');
 
 	        return _axios2.default.get('https://api.nytimes.com/svc/search/v2/articlesearch.json', {
 	            params: {
 	                'api-key': APIKey,
 	                'q': term,
 	                'begin_date': start,
-	                'end_date': end
+	                'end_date': end,
+	                'sort': "newest"
 	            }
 	        }).then(function (results) {
-
+	            console.log('query finished');
 	            return results.data.response;
+	        }).catch(function (err) {
+	            console.log(err);
 	        });
 	    },
 	    getSaved: function getSaved() {
@@ -28478,7 +28495,6 @@
 	                this.setState({
 	                    saved: data.data
 	                });
-	                console.log('saved results', data.data);
 	            }.bind(this));
 	        }
 	    }, {
@@ -28486,7 +28502,11 @@
 	        value: function handleClick(article, e) {
 	            e.preventDefault();
 	            _helper2.default.deleteSaved(article.title, article.paragraph, article.date, article.url).then(function (data) {
-	                console.log('component did mount here');
+	                _helper2.default.getSaved().then(function (data) {
+	                    this.setState({
+	                        saved: data.data
+	                    });
+	                }.bind(this));
 	            }.bind(this));
 	        }
 	    }, {
@@ -28592,7 +28612,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'panel-body text-center' },
+	                    { className: 'panel-body' },
 	                    _react2.default.createElement(
 	                        'ul',
 	                        { className: 'list-group' },

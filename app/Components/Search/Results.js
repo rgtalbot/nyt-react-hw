@@ -4,9 +4,10 @@ import helpers from '../utils/helper'
 
 class Results extends React.Component {
 
-    handleClick(item, event) {
+    handleClick(item) {
         helpers.postSaved(item.headline.main, item.lead_paragraph, item.pub_date, item.web_url)
             .then(function (data) {
+                console.log('save successful');
             }.bind(this));
     }
 
@@ -33,10 +34,10 @@ class Results extends React.Component {
                                 </div>
                                 <div className="col-xs-4">
                                     <div className="row">
-                                        <a href={article.web_url} target="_blank" className="btn">View Article</a>
+                                        <a href={article.web_url} target="_blank"><button className="btn btn-primary">View Article</button></a>
                                     </div>
                                     <div className="row">
-                                        <button className="btn" onClick={this.handleClick.bind(this, article)}>Save</button>
+                                        <button className="btn btn-default" onClick={this.handleClick.bind(this, article)}>Save</button>
 
                                         </div>
                                     </div>

@@ -7,18 +7,23 @@ const helpers = {
         term = term.trim();
         start = start.trim() + "0101";
         end = end.trim() + "1231";
+        console.log('query started');
 
         return axios.get('https://api.nytimes.com/svc/search/v2/articlesearch.json', {
             params: {
                 'api-key': APIKey,
                 'q': term,
                 'begin_date': start,
-                'end_date': end
+                'end_date': end,
+                'sort': "newest"
             }
         })
             .then(function(results) {
-
+                console.log('query finished');
                 return results.data.response;
+            })
+            .catch(function (err) {
+                console.log(err);
             })
     },
 

@@ -17,7 +17,6 @@ class Saved extends React.Component {
                 this.setState({
                     saved: data.data
                 });
-                console.log('saved results', data.data)
             }.bind(this))
     }
 
@@ -25,7 +24,12 @@ class Saved extends React.Component {
         e.preventDefault();
         helpers.deleteSaved(article.title, article.paragraph, article.date, article.url)
             .then(function (data) {
-                console.log('component did mount here');
+                helpers.getSaved()
+                    .then(function (data) {
+                        this.setState({
+                            saved: data.data
+                        });
+                    }.bind(this))
             }.bind(this))
     }
 
@@ -73,7 +77,7 @@ class Saved extends React.Component {
                 <div className="panel-heading">
                     <h3 className="panel-title text-center">Saved</h3>
                 </div>
-                <div className="panel-body text-center">
+                <div className="panel-body">
                     <ul className="list-group">
                         {articles}
                     </ul>
