@@ -56,10 +56,10 @@ class Saved extends React.Component {
                                 </div>
                                 <div className="col-xs-4">
                                     <div className="row">
-                                        <a href={article.web_url} target="_blank" className="btn">View Article</a>
+                                        <a href={article.web_url} target="_blank"><button className="btn btn-primary">View Article</button></a>
                                     </div>
                                     <div className="row">
-                                        <button className="btn" onClick={this.handleClick.bind(this, article)}>Delete
+                                        <button className="btn btn-danger" onClick={this.handleClick.bind(this, article)}>Delete
                                         </button>
 
                                     </div>

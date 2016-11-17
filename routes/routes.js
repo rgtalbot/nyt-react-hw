@@ -27,12 +27,12 @@ router.get('/api/saved', function (req, res) {
 
 //POST ROUTE
 router.post('/api/saved', function (req, res) {
-
+    console.log('post route');
     var saveArticle = new Article(req.body);
-
+    console.log("saveArticle", saveArticle);
     saveArticle.save(function (err, doc) {
         if (err)
-            throw err;
+            console.log(err);
         else
             res.send('saved');
     });

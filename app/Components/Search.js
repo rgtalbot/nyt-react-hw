@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Query from './Search/Query'
+import SearchForm from './Search/SearchForm'
 import Results from './Search/Results'
 import helpers from './utils/helper'
 
@@ -45,7 +45,7 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <Query update={this.setSearch} />
+                <SearchForm update={this.setSearch} />
 
                 <Results results={this.state.results} />
             </div>

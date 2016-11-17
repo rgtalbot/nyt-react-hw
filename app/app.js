@@ -1,7 +1,7 @@
 // Include the Main React Dependencies
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 
 //Import the components
 import Main from './Components/Main'

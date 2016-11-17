@@ -35,15 +35,18 @@ const helpers = {
     },
 
     postSaved(title, paragraph, date, url) {
+        console.log('posts saved');
         var newArticle = {
             title: title,
             paragraph: paragraph,
             date: date,
             url: url
         };
+        console.log('newArticle', newArticle);
 
         return axios.post('/api/saved', newArticle)
             .then(function(results) {
+                console.log('inside helper post');
                 console.log(results);
                 return results._id;
             })

@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Query extends React.Component {
+class SearchForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,16 +12,19 @@ class Query extends React.Component {
     }
 
     handleChange(name, event) {
-        var change = {};
-        change[name] = event.target.value;
-        this.setState(change);
-        console.log(this.state);
+        var changes = {};
+        changes[name] = event.target.value;
+        this.setState(changes);
     }
 
-    handleSubmit(e) {
+    handleClick(e) {
         e.preventDefault();
-        console.log('submit');
         this.props.update(this.state.topic, this.state.start, this.state.end);
+        this.setState({
+            topic: "",
+            start: "",
+            end: ""
+        });
 
     }
 
@@ -43,7 +46,7 @@ class Query extends React.Component {
                             <label>End Year <input type="text" value={this.state.end} onChange={this.handleChange.bind(this, 'end')} className="form-control" name="end" required/></label>
                         </div>
                         <div>
-                            <input type="submit" onClick={this.handleSubmit.bind(this)} value="Submit"/>
+                            <input type="submit" onClick={this.handleClick.bind(this)} value="Submit"/>
                         </div>
                     </form>
                 </div>
@@ -53,4 +56,4 @@ class Query extends React.Component {
 
 }
 
-export default Query
+export default SearchForm

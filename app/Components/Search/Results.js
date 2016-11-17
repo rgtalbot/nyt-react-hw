@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import helpers from '../utils/helper'
 
@@ -15,13 +16,12 @@ class Results extends React.Component {
         if (!this.props.results.hasOwnProperty('docs')) {
             return (
                 <li className="list-group-item">
-                    <h3>
-                        <span><em>Enter search terms to begin ...</em></span>
-                    </h3>
+                    <h3>Enter search terms to begin ...</h3>
                 </li>
             )
         } else {
             var articles = this.props.results.docs.map(function (article, index) {
+                var datePub = moment(article.pub_date).format('MMM Do, YYYY');
                 return (
                     <div key={index}>
                         <li className="list-group-item">
@@ -43,7 +43,7 @@ class Results extends React.Component {
                                     </div>
                             </div>
 
-                            <p>Date Published: {article.pub_date}</p>
+                            <p>Date Published: {datePub}</p>
                         </li>
                     </div>
 
