@@ -8,16 +8,16 @@ let router = express.Router();
 import Article from './../models/Article'
 
 //MAIN ROUTE TO SPA
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './../public/index.html'));
 });
 
 //==========SCHEMA ROUTES==========
 //GET ROUTE
-router.get('/api/saved', function (req, res) {
+router.get('/api/saved', (req, res)=> {
 
     Article.find({})
-        .exec(function (err, doc) {
+        .exec((err, doc) => {
             if (err)
                 throw err;
             else
@@ -26,11 +26,9 @@ router.get('/api/saved', function (req, res) {
 });
 
 //POST ROUTE
-router.post('/api/saved', function (req, res) {
-    console.log('post route');
-    var saveArticle = new Article(req.body);
-    console.log("saveArticle", saveArticle);
-    saveArticle.save(function (err, doc) {
+router.post('/api/saved', (req, res) => {
+    const saveArticle = new Article(req.body);
+    saveArticle.save((err, doc) => {
         if (err)
             console.log(err);
         else
@@ -40,10 +38,8 @@ router.post('/api/saved', function (req, res) {
 
 //DELETE ROUTE
 router.delete('/api/saved/', function (req, res) {
-
     var url = req.param('url');
-
-    Article.findOneAndRemove({"url": url}).exec(function (err, data) {
+    Article.findOneAndRemove({"url": url}).exec((err, data)=> {
         if (err)
             throw err;
         else

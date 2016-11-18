@@ -26,11 +26,11 @@ app.use('/', routes);
 mongoose.connect('mongodb://heroku_j3994l01:er6m0l34amm8jn958eqrg1bvsa@ds155087.mlab.com:55087/heroku_j3994l01');
 let db = mongoose.connection;
 
-db.on('error', function (err) {
+db.on('error', (err) => {
     console.log('Mongoose Error: ', err);
 });
 
-db.once('open', function () {
+db.once('open', () => {
     console.log('Mongoose connection successful.');
 });
 
